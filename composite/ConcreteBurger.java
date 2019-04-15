@@ -1,24 +1,38 @@
 package composite;
 
-public class ConcreteBurger implements Burger{
+import java.util.ArrayList;
 
-    String[] options;
-    double price;
+public class ConcreteBurger implements Burger extends Composite{
 
-    public void setOptions(String[] options) {
+    private ArrayList<String> options = new ArrayList<>();
+    private double price;
+    Burger newBurger;
+
+
+    public ConcreteBurger(String d) {
+        super(d);
+        super(newBurger);
+    }
+
+    @Override
+    public double setOptions(ArrayList<String> options) {
         this.options = options;
 
-        //loop through all burger selections & determine cost of each item accordingly
-        for(int i = 0; i < options.length; i++) {
-            if ("1/31b.".equals(options[i])) {
+            //protein weight proportion price
+            if (options.get(0).indexOf("1/3lb.") != -1) {
                 this.price += 9.50;
-            } else if ("2/3lb".equals(options[i])) {
+            }
+            if (options.get(0).indexOf("2/3lb.") != -1) {
                 this.price += 11.50;
-            } else if ("1lb".equals(options[i])) {
+            }
+            if (options.get(0).indexOf("1lb.") != -1) {
                 this.price += 15.50;
-            } else if ("In A Bowl".equals(options[i])) {
+            }
+            //bowl costs additional $1.00
+            if (options.get(0).indexOf("In A Bowl") != -1) {
                 this.price += 1.00;
             }
-        }
+
+        return this.price;
     }
 }

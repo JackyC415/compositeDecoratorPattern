@@ -1,6 +1,8 @@
 package composite;
 
+import java.util.ArrayList;
+
 public interface Burger {
 
-    void setOptions(String[] options);
+        double setOptions(String[] options);
 }
